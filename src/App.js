@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import WeatherStationSelector from './components/weather-station-selector';
+import YearSelector from './components/year-selector';
 
 import 'bulma/css/bulma.css'
 import './App.css';
@@ -9,6 +10,21 @@ import './App.css';
 function App() {
 
   const [selectedWeatherStation, setSelectedWeatherStation] = useState(null);
+  const [yearsRange, setYearsRange] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
+
+  const weatherStationChange = (selectedItem) => {
+    setSelectedWeatherStation(selectedItem);
+    setYearsRange({
+      from: selectedItem.firstYear,
+      to: selectedItem.lastYear,
+    });
+    setSelectedYear(null);
+  }
+
+  const yearChange = (year) => {
+    setSelectedYear(year);
+  }
 
   return (
     <>
@@ -24,20 +40,17 @@ function App() {
           <div className="field">
             <label className="label">Weather Station</label>
             <div className="control">              
-              <WeatherStationSelector onChange={(selectedItem) => setSelectedWeatherStation(selectedItem)} />
+              <WeatherStationSelector onChange={weatherStationChange} />
             </div>
+            {yearsRange &&
+              <p className="help">Data available for years {yearsRange.from} - {yearsRange.to}</p>
+            }
           </div>
-
 
           <div className="field">
             <label className="label">Year</label>
             <div className="control">
-              <div className="select">
-                <select>
-                  <option>Select dropdown</option>
-                  <option>With options</option>
-                </select>
-              </div>
+              <YearSelector range={yearsRange} onChange={yearChange} />
             </div>
           </div> 
 
@@ -51,6 +64,9 @@ function App() {
 
           <p>
             {JSON.stringify(selectedWeatherStation, null, 2)}
+          </p>
+          <p>
+            {selectedYear}
           </p>
 
 
