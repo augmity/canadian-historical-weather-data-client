@@ -1,3 +1,21 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/adc785eb-b4e6-4af1-9061-5fa29a16b322/deploy-status)](https://app.netlify.com/sites/canadian-historical-weather-data/deploys)
+
+# Canadian Historical Weather Data (client)
+
+A ReactJS app that displays historical weather data from [https://climate.weather.gc.ca](https://climate.weather.gc.ca)
+
+## Live Demo
+
+[https://canadian-historical-weather-data.netlify.com/](https://canadian-historical-weather-data.netlify.com/)
+
+## Back-end
+
+[https://historical-weather-data-canada.herokuapp.com/](https://historical-weather-data-canada.herokuapp.com/)
+
+Source code: [https://github.com/augmity/canadian-historical-weather-data-server](https://github.com/augmity/canadian-historical-weather-data-server)
+
+--- 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
