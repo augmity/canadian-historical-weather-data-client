@@ -6,6 +6,7 @@
 @media screen and (max-width: 1023px)  {
   .navbar-brand {
     padding: 0 16px;
+    display: flex !important;
   }
 }
 
