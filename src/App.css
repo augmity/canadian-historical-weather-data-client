@@ -19,3 +19,8 @@
   margin-right: 16px;
   max-width: 100%;
 }
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+}

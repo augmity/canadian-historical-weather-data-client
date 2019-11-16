@@ -7,8 +7,10 @@
     "apollo-boost": "^0.4.4",
     "bulma": "^0.8.0",
     "graphql": "^14.5.8",
+    "leaflet": "^1.5.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-leaflet": "^2.5.0",
     "react-scripts": "3.2.0"
   },
   "scripts": {

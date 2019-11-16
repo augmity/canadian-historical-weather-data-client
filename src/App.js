@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
 
 import WeatherStationSelector from './components/weather-station-selector';
 import YearSelector from './components/year-selector';
@@ -13,6 +14,9 @@ function App() {
   const [selectedWeatherStation, setSelectedWeatherStation] = useState(null);
   const [yearsRange, setYearsRange] = useState(null);
   const [chartParams, setChartParams] = useState(null);
+  const [position, setPosition] = useState([49.853959,-97.292307]);
+  const [marker, setMarker] = useState(null);
+
 
   const weatherStationChange = (selectedItem) => {
     setSelectedWeatherStation(selectedItem);
@@ -21,6 +25,14 @@ function App() {
       to: selectedItem.lastYear,
     });
     setChartParams(null);
+
+    // Map stuff
+    const weatherStationPosition = [selectedItem.latitude / 10000000, selectedItem.longitude / 10000000];
+    setMarker({
+      text: selectedItem.name,
+      position: weatherStationPosition
+    });
+    setPosition(weatherStationPosition);
   }
 
   const yearChange = (year) => {
@@ -32,6 +44,17 @@ function App() {
 
   return (
     <>
+      <LeafletMap center={position} zoom={5}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+        />
+        {marker && <Marker position={marker.position}>
+          <Popup>{marker.text}</Popup>
+        </Marker>}
+      </LeafletMap>
+
+
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand container">
           <h1 className="is-size-5 has-text-weight-semibold">Canadian Historical Weather Data</h1>
