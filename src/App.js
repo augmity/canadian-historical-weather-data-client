@@ -33,8 +33,8 @@ function App() {
   return (
     <>
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <h1 className="is-size-5 has-text-weight-semibold">Canadian Historical Weather Data (client)</h1>
+        <div className="navbar-brand container">
+          <h1 className="is-size-5 has-text-weight-semibold">Canadian Historical Weather Data</h1>
         </div>
       </nav>
 
