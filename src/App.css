@@ -1,6 +1,6 @@
 .navbar-brand {
   display: flex;
-  align-items: center important!;
+  align-items: center !important;
 }
 
 @media screen and (max-width: 1023px)  {
