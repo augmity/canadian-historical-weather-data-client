@@ -27,7 +27,7 @@ function App() {
     setChartParams(null);
 
     // Map stuff
-    const weatherStationPosition = [selectedItem.latitude / 10000000, selectedItem.longitude / 10000000];
+    const weatherStationPosition = [selectedItem.latitude, selectedItem.longitude];
     setMarker({
       text: selectedItem.name,
       position: weatherStationPosition

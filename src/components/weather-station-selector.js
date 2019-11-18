@@ -10,8 +10,8 @@ const WEATHER_STATIONS_QUERY = gql`
       name
       firstYear
       lastYear
-      latitude
-      longitude
+      latitude: latitudeDecimalDegrees
+      longitude: longitudeDecimalDegrees
     }
   }
 `;
