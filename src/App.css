@@ -13,6 +13,7 @@
 .selects {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .selects .field {
@@ -23,4 +24,8 @@
 .leaflet-container {
   height: 400px;
   width: 100%;
+}
+
+.graph {
+  fill: none;
 }

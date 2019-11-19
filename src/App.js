@@ -3,7 +3,7 @@ import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
 
 import WeatherStationSelector from './components/weather-station-selector';
 import YearSelector from './components/year-selector';
-import Chart from './components/chart';
+import { WeatherStationChart } from './components/weather-station-chart';
 
 import 'bulma/css/bulma.css'
 import './App.css';
@@ -44,6 +44,10 @@ function App() {
 
   return (
     <>
+
+{/* <YearSelector range={{from: 2000, to: 2019}} onChange={yearChange} />
+      <WeatherStationChart queryParams={chartParams} /> */}
+
       <LeafletMap center={position} zoom={5}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -84,16 +88,9 @@ function App() {
           }
 
         </div>
-      </section>
 
-      <section className="section">
         <div className="container">
-
-          <p>
-            {JSON.stringify(selectedWeatherStation, null, 2)}
-          </p>
-
-          {chartParams && <Chart queryParams={chartParams} />}
+          {chartParams && <WeatherStationChart queryParams={chartParams} />}
         </div>
       </section>
     </>

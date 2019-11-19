@@ -2,6 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
+import { CalendarChart } from './calendar-chart';
+
 
 const WEATHER_STATION_DATA_QUERY = gql`
   query WeatherStationData($stationId: Int!, $year: Int!) {
@@ -13,35 +15,26 @@ const WEATHER_STATION_DATA_QUERY = gql`
   }
 `;
 
-
 /*
- * Chart
+ * WeatherStationChart
  */
-const Chart = ({ queryParams }) => {
+export const WeatherStationChart = ({ queryParams }) => {
 
-  console.log('queryParams', queryParams);
   const { loading, error, data } = useQuery(WEATHER_STATION_DATA_QUERY, {
     variables: queryParams
   });
-  
+
   // on Error
   if (error) return <p>Error :(</p>;
 
   // on Loading
-  if (loading) return <p>Loading items..</p>;
+  if (loading) return <p>Loading chart..</p>;
 
-  
-  // on Data Available
+  // on Data Loaded
   return <div>
-{queryParams && <p>stationId: {queryParams.stationId}</p>}
-{queryParams && <p>year: {queryParams.year}</p>}
-
-
-    <pre>
-      {JSON.stringify(data, null, 2)}
-    </pre>
-
+    <p className="is-size-6" style={{ marginBottom: '8px'}}>Rain</p>
+    <CalendarChart data={data.weatherStationData} dataType="rain" />
+    <p className="is-size-6" style={{ marginBottom: '8px', marginTop: '16px' }}>Temperature</p>
+    <CalendarChart data={data.weatherStationData} dataType="temperature" />
   </div>
 }
-
-export default Chart;
